@@ -1,15 +1,11 @@
-import 'package:cabmate_task/screens/login.dart';
+import 'package:cabmate_task/screens/homepage.dart';
+import 'package:cabmate_task/screens/credential/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
-  @override
-  State<SignUpPage> createState() => _SignUpPageState();
-}
-
-class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +22,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               const SizedBox(height: 20),
               const Text(
-                'Sign Up',
+                'Login',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -51,15 +47,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 obscureText: true,
               ),
               const SizedBox(height: 20),
-              const Text("Confirm Password"),
-              const SizedBox(height: 5),
-              const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                ),
-                obscureText: true,
-              ),
-              const SizedBox(height: 20),
               SizedBox(
                 height: 50,
                 child: ElevatedButton(
@@ -67,9 +54,16 @@ class _SignUpPageState extends State<SignUpPage> {
                     backgroundColor: Colors.green,
                     shape: const RoundedRectangleBorder(),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
+                  },
                   child: const Text(
-                    "REGISTER",
+                    "LOGIN",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -78,11 +72,11 @@ class _SignUpPageState extends State<SignUpPage> {
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: "Already have an account? ",
+                  text: "Don't have an account? ",
                   style: const TextStyle(color: Colors.black),
                   children: [
                     TextSpan(
-                        text: 'Login',
+                        text: 'Sign up',
                         style: const TextStyle(
                           color: Colors.blue,
                           decoration: TextDecoration.underline,
@@ -92,7 +86,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (ctx) => const LoginScreen()));
+                                    builder: (context) => const SignUpPage()));
                           }),
                   ],
                 ),

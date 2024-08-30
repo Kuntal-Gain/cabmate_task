@@ -1,6 +1,7 @@
+import 'package:cabmate_task/screens/payment/payment_method_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/country.dart';
+import '../../utils/country.dart';
 
 class GiftCardScreen extends StatefulWidget {
   const GiftCardScreen({super.key});
@@ -436,21 +437,28 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                 ),
               ],
             ),
-            Container(
-              height: 60,
-              width: double.infinity,
-              margin: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(14),
+            GestureDetector(
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const PaymentMethodScreen(),
+                ),
               ),
-              child: const Center(
-                child: Text(
-                  'Pay Now',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 23,
-                    fontWeight: FontWeight.bold,
+              child: Container(
+                height: 60,
+                width: double.infinity,
+                margin: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: const Center(
+                  child: Text(
+                    'Pay Now',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

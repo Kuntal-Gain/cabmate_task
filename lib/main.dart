@@ -1,4 +1,4 @@
-import 'package:cabmate_task/screens/signup.dart';
+import 'package:cabmate_task/screens/credential/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,4 +1,4 @@
-import 'package:cabmate_task/screens/profile.dart';
+import 'package:cabmate_task/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

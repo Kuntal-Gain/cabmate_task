@@ -1,4 +1,4 @@
-import 'package:cabmate_task/screens/gift_card_screen.dart';
+import 'package:cabmate_task/screens/giftcard/gift_card_screen.dart';
 import 'package:cabmate_task/widgets/profile_card_tile.dart';
 import 'package:flutter/material.dart';
 
