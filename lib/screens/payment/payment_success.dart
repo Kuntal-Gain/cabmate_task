@@ -1,9 +1,11 @@
 import 'package:cabmate_task/screens/giftcard/gift_card_successful_payment.dart';
+import 'package:cabmate_task/utils/gift_card.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart'; // You need to add the lottie package to your pubspec.yaml
 
 class PaymentSuccessScreen extends StatefulWidget {
-  const PaymentSuccessScreen({super.key});
+  final GiftCard giftCard;
+  const PaymentSuccessScreen({super.key, required this.giftCard});
 
   @override
   State<PaymentSuccessScreen> createState() => _PaymentSuccessScreenState();
@@ -15,7 +17,9 @@ class _PaymentSuccessScreenState extends State<PaymentSuccessScreen> {
     Future.delayed(const Duration(seconds: 2), () {
       // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (ctx) => const GiftCardSuccessfulPayment()));
+          builder: (ctx) => GiftCardSuccessfulPayment(
+                giftCard: widget.giftCard.giftCardNum,
+              )));
     });
     super.initState();
   }

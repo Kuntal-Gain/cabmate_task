@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GiftCardSuccessfulPayment extends StatefulWidget {
-  const GiftCardSuccessfulPayment({super.key});
+  final String giftCard;
+  const GiftCardSuccessfulPayment({super.key, required this.giftCard});
 
   @override
   State<GiftCardSuccessfulPayment> createState() =>
@@ -35,11 +36,11 @@ class _GiftCardSuccessfulPaymentState extends State<GiftCardSuccessfulPayment> {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Text(
-                'Your Gift Card has been sent , Please note Gift Card code QQ8KU539GQ',
-                style: TextStyle(
+                'Your Gift Card has been sent , Please note Gift Card code ${widget.giftCard}',
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
