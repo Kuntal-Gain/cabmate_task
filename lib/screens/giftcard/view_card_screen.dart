@@ -20,10 +20,10 @@ class _ViewCardScreenState extends State<ViewCardScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Text(
                   "Hi ${widget.card.reciverName},",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.bold,
                   ),
@@ -33,16 +33,17 @@ class _ViewCardScreenState extends State<ViewCardScreen> {
                 padding: const EdgeInsets.all(12.0),
                 child: RichText(
                   text: TextSpan(
-                    style: TextStyle(color: Colors.black), // Default style
+                    style:
+                        const TextStyle(color: Colors.black), // Default style
                     children: [
-                      TextSpan(
+                      const TextSpan(
                           text: "You have received a Gift Card worth",
                           style: TextStyle(
                             fontSize: 23,
                           )),
                       TextSpan(
                         text: " \$${widget.card.amount} ",
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
                           fontSize: 23,
@@ -50,7 +51,7 @@ class _ViewCardScreenState extends State<ViewCardScreen> {
                       ),
                       TextSpan(
                         text: " from ${widget.card.senderName}.",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 23,
                         ),
@@ -107,7 +108,7 @@ class _ViewCardScreenState extends State<ViewCardScreen> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,24 +116,24 @@ class _ViewCardScreenState extends State<ViewCardScreen> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Gift Code',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 21,
                                 ),
                               ),
-                              SizedBox(height: 4),
+                              const SizedBox(height: 4),
                               Text(
                                 widget.card.giftCardNum,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 150,
                             child: VerticalDivider(
                               color: Colors.grey,
@@ -145,22 +146,22 @@ class _ViewCardScreenState extends State<ViewCardScreen> {
                             children: [
                               Text(
                                 '\$${widget.card.amount}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.red,
                                   fontSize: 35,
                                 ),
                               ),
-                              SizedBox(height: 4),
-                              Text(
+                              const SizedBox(height: 4),
+                              const Text(
                                 'Use at Cabmate\nApp',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
                               ),
-                              SizedBox(height: 20),
-                              Text(
+                              const SizedBox(height: 20),
+                              const Text(
                                 '*Conditions Apply',
                                 style: TextStyle(
                                   color: Colors.blue,

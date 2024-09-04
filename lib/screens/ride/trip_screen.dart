@@ -1,3 +1,6 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
@@ -117,16 +120,16 @@ class _TripScreenState extends State<TripScreen> {
                         myLocationButtonEnabled: true,
                         markers: {
                           Marker(
-                            markerId: MarkerId('currentLocation'),
+                            markerId: const MarkerId('currentLocation'),
                             position: _currentPosition,
-                            infoWindow: InfoWindow(title: 'You are here'),
+                            infoWindow: const InfoWindow(title: 'You are here'),
                           ),
                         },
                       ),
                       Positioned(
                         top: 10,
                         child: Container(
-                          margin: EdgeInsets.all(12),
+                          margin: const EdgeInsets.all(12),
                           height: 80,
                           width: MediaQuery.of(context).size.width -
                               20, // Adjust width
@@ -134,7 +137,7 @@ class _TripScreenState extends State<TripScreen> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: Row(
+                          child: const Row(
                             children: [
                               Icon(Icons.location_pin),
                               Expanded(
@@ -157,23 +160,23 @@ class _TripScreenState extends State<TripScreen> {
                             Container(
                               height: 60,
                               width: 60,
-                              padding: EdgeInsets.all(12),
-                              decoration: BoxDecoration(
+                              padding: const EdgeInsets.all(12),
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
                                 shape: BoxShape.circle,
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.menu,
                                 color: Colors.black,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                                 height: 10), // Add some space between buttons
                             Container(
                               height: 60,
                               width: 60,
-                              padding: EdgeInsets.all(12),
-                              decoration: BoxDecoration(
+                              padding: const EdgeInsets.all(12),
+                              decoration: const BoxDecoration(
                                 color: Colors.red,
                                 shape: BoxShape.circle,
                               ),
@@ -203,10 +206,9 @@ class _TripScreenState extends State<TripScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              SizedBox(height: 40),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
+                              const SizedBox(height: 40),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
                                 child: Text(
                                   '4.68 miles',
                                   style: TextStyle(
@@ -215,9 +217,8 @@ class _TripScreenState extends State<TripScreen> {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
                                 child: Text(
                                   '7 min',
                                   style: TextStyle(
@@ -229,7 +230,7 @@ class _TripScreenState extends State<TripScreen> {
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
-                                  margin: EdgeInsets.all(12),
+                                  margin: const EdgeInsets.all(12),
                                   width: double.infinity,
                                   height: 70,
                                   decoration: BoxDecoration(
@@ -254,7 +255,9 @@ class _TripScreenState extends State<TripScreen> {
                                           onHorizontalDragEnd: (details) {
                                             if (_iconPosition > 100) {
                                               // Handle action for reaching the destination
-                                              print("Destination Reached");
+                                              if (kDebugMode) {
+                                                print("Destination Reached");
+                                              }
                                               setState(() {
                                                 _rideCompleted =
                                                     true; // Mark ride as completed
@@ -286,8 +289,8 @@ class _TripScreenState extends State<TripScreen> {
                                             _rideCompleted
                                                 ? 'Ride Completed'
                                                 : 'Swipe to complete ride', // Change text based on ride status
-                                            style:
-                                                TextStyle(color: Colors.white),
+                                            style: const TextStyle(
+                                                color: Colors.white),
                                           ),
                                         ),
                                       ),
@@ -305,7 +308,7 @@ class _TripScreenState extends State<TripScreen> {
                         child: Container(
                           height: 70,
                           width: 70,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                             shape: BoxShape.circle,
                             boxShadow: [

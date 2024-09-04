@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cabmate_task/screens/giftcard/view_card_screen.dart';
 import 'package:cabmate_task/screens/payment/payment_method_screen.dart';
 import 'package:cabmate_task/utils/gift_card.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/country.dart';
@@ -173,7 +174,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                         double.parse(moneyController.text);
                                   });
                                 },
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
                                 ),
                               ),
@@ -242,7 +243,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                             }
                             return null;
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                           ),
                         ),
@@ -290,7 +291,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                             return null;
                           },
                           controller: nameController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: 'Robert Smith',
                             border: InputBorder.none,
                           ),
@@ -314,7 +315,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
@@ -324,7 +325,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                             return null;
                           },
                           controller: emailController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: 'robert_smith@demo.com',
                             border: InputBorder.none,
                           ),
@@ -408,7 +409,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                   }
                                   return null;
                                 },
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   hintText: '2586543570',
                                   border: InputBorder.none,
                                 ),
@@ -425,7 +426,9 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    print(code);
+                    if (kDebugMode) {
+                      print(code);
+                    }
 
                     if (_formKey.currentState!.validate()) {
                       Navigator.of(context).push(MaterialPageRoute(
@@ -509,7 +512,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                   ),
                   Text(
                     '\$$ammount',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.bold,
                       color: Colors.blue,
@@ -539,7 +542,9 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
               ),
               GestureDetector(
                 onTap: () {
-                  print(code);
+                  if (kDebugMode) {
+                    print(code);
+                  }
                   if (_formKey.currentState!.validate()) {
                     Navigator.of(context).push(
                       MaterialPageRoute(

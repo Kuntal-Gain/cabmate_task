@@ -1,11 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cabmate_task/screens/payment/payment_success.dart';
 import 'package:cabmate_task/service/api_service.dart';
 import 'package:cabmate_task/utils/gift_card.dart';
 import 'package:cabmate_task/utils/payment.dart';
 import 'package:cabmate_task/widgets/payment_card.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 
@@ -162,11 +164,17 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
     try {
       // Send the email
       final sendReport = await send(message, smtpServer);
-      print('Message sent: ' + sendReport.toString());
+      if (kDebugMode) {
+        print('Message sent: $sendReport');
+      }
     } on MailerException catch (e) {
-      print('Message not sent. ${e.message}');
+      if (kDebugMode) {
+        print('Message not sent. ${e.message}');
+      }
       for (var p in e.problems) {
-        print('Problem: ${p.code}: ${p.msg}');
+        if (kDebugMode) {
+          print('Problem: ${p.code}: ${p.msg}');
+        }
       }
     }
   }
@@ -227,7 +235,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
             onTap: () async {
               final message =
                   'Hi , ${widget.card.reciverName}. You have received a Gift Card worth \$${widget.card.amount} from ${widget.card.senderName}. You can redeem it on cabbmate by entering your Gift code: ${widget.card.giftCardNum}';
-              final number = "91" + widget.card.reciverPhone;
+              final number = "91${widget.card.reciverPhone}";
 
               await ApiService().sendSms(number, message).then((val) {
                 // send mail

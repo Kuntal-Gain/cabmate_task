@@ -14,21 +14,21 @@ class _HomepageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _screens = [
+    final List<Widget> screens = [
       const Center(child: Text('Search')),
       Center(
           child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (ctx) => TripScreen()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (ctx) => const TripScreen()));
               },
-              child: Text('Show Trip'))),
+              child: const Text('Show Trip'))),
       const Center(child: Text('Messages')),
       const ProfileScreen(),
     ];
 
     return Scaffold(
-      body: _screens[selectedIdx],
+      body: screens[selectedIdx],
       bottomNavigationBar: BottomNavigationBar(
         onTap: (val) {
           setState(() {

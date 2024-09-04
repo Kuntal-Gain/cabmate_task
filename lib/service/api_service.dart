@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -10,11 +11,15 @@ class ApiService {
   Future<void> sendSms(String recipientNumber, String message) async {
     // Check for null or empty input
     if (recipientNumber.isEmpty) {
-      print('Recipient number is required');
+      if (kDebugMode) {
+        print('Recipient number is required');
+      }
       return;
     }
     if (message.isEmpty) {
-      print('Message is required');
+      if (kDebugMode) {
+        print('Message is required');
+      }
       return;
     }
 
@@ -38,15 +43,23 @@ class ApiService {
     );
 
     // Log the response
-    print('Response Status: ${response.statusCode}');
-    print('Response Body: ${response.body}');
+    if (kDebugMode) {
+      print('Response Status: ${response.statusCode}');
+    }
+    if (kDebugMode) {
+      print('Response Body: ${response.body}');
+    }
 
     // Check for success
     if (response.statusCode == 201) {
-      print('Message sent successfully');
+      if (kDebugMode) {
+        print('Message sent successfully');
+      }
     } else {
-      print(
-          'Failed to send message: ${response.statusCode} - ${response.body}');
+      if (kDebugMode) {
+        print(
+            'Failed to send message: ${response.statusCode} - ${response.body}');
+      }
     }
   }
 }
