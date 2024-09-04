@@ -1,4 +1,5 @@
 import 'package:cabmate_task/screens/profile/profile.dart';
+import 'package:cabmate_task/screens/ride/trip_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,15 +12,21 @@ class HomePage extends StatefulWidget {
 class _HomepageState extends State<HomePage> {
   int selectedIdx = 0;
 
-  final List<Widget> _screens = const [
-    Center(child: Text('Search')),
-    Center(child: Text('Add')),
-    Center(child: Text('Messages')),
-    ProfileScreen(),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _screens = [
+      const Center(child: Text('Search')),
+      Center(
+          child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (ctx) => TripScreen()));
+              },
+              child: Text('Show Trip'))),
+      const Center(child: Text('Messages')),
+      const ProfileScreen(),
+    ];
+
     return Scaffold(
       body: _screens[selectedIdx],
       bottomNavigationBar: BottomNavigationBar(
