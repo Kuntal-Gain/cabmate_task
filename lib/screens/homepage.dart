@@ -1,4 +1,5 @@
 import 'package:cabmate_task/screens/profile/profile.dart';
+import 'package:cabmate_task/screens/ride/publish_ride.dart';
 import 'package:cabmate_task/screens/ride/trip_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,13 +17,25 @@ class _HomepageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       const Center(child: Text('Search')),
-      Center(
-          child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (ctx) => const TripScreen()));
-              },
-              child: const Text('Show Trip'))),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (ctx) => const TripScreen()));
+                  },
+                  child: const Text('Show Trip'))),
+          Center(
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (ctx) => const PublishRideScreen()));
+                  },
+                  child: const Text('Create Ride'))),
+        ],
+      ),
       const Center(child: Text('Messages')),
       const ProfileScreen(),
     ];

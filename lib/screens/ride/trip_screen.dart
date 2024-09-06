@@ -31,13 +31,11 @@ class _TripScreenState extends State<TripScreen> {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Check if location services are enabled
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       return;
     }
 
-    // Check location permissions
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
@@ -50,7 +48,6 @@ class _TripScreenState extends State<TripScreen> {
       return;
     }
 
-    // Get the current location
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
@@ -59,7 +56,6 @@ class _TripScreenState extends State<TripScreen> {
       _currentPosition = LatLng(position.latitude, position.longitude);
       _isLoading = false;
 
-      // Move the map camera only if the map controller is already initialized
       _moveCamera();
     });
   }
@@ -114,7 +110,7 @@ class _TripScreenState extends State<TripScreen> {
                         ),
                         onMapCreated: (controller) {
                           _mapController = controller;
-                          _moveCamera(); // Move the camera once the map is created
+                          _moveCamera();
                         },
                         myLocationEnabled: true,
                         myLocationButtonEnabled: true,
@@ -131,8 +127,7 @@ class _TripScreenState extends State<TripScreen> {
                         child: Container(
                           margin: const EdgeInsets.all(12),
                           height: 80,
-                          width: MediaQuery.of(context).size.width -
-                              20, // Adjust width
+                          width: MediaQuery.of(context).size.width - 20,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(16),
@@ -141,7 +136,6 @@ class _TripScreenState extends State<TripScreen> {
                             children: [
                               Icon(Icons.location_pin),
                               Expanded(
-                                // Use Expanded to avoid overflow
                                 child: Text(
                                   '41, Science City, Sola, Ahmedabad, Gujarat 380060, India',
                                   overflow: TextOverflow.ellipsis,
@@ -170,8 +164,7 @@ class _TripScreenState extends State<TripScreen> {
                                 color: Colors.black,
                               ),
                             ),
-                            const SizedBox(
-                                height: 10), // Add some space between buttons
+                            const SizedBox(height: 10),
                             Container(
                               height: 60,
                               width: 60,
@@ -236,43 +229,35 @@ class _TripScreenState extends State<TripScreen> {
                                   decoration: BoxDecoration(
                                     color: _rideCompleted
                                         ? Colors.green
-                                        : Colors
-                                            .red, // Change color based on ride status
+                                        : Colors.red,
                                     borderRadius: BorderRadius.circular(14),
                                   ),
                                   child: Row(
                                     children: [
-                                      // Only show the icon if the ride is not completed
                                       if (!_rideCompleted)
                                         GestureDetector(
                                           onHorizontalDragUpdate: (details) {
-                                            // Move only the icon
                                             setState(() {
-                                              _iconPosition += details.delta
-                                                  .dx; // Update the icon's position based on the drag
+                                              _iconPosition += details.delta.dx;
                                             });
                                           },
                                           onHorizontalDragEnd: (details) {
                                             if (_iconPosition > 100) {
-                                              // Handle action for reaching the destination
                                               if (kDebugMode) {
                                                 print("Destination Reached");
                                               }
                                               setState(() {
-                                                _rideCompleted =
-                                                    true; // Mark ride as completed
-                                                _iconPosition =
-                                                    0; // Reset position
+                                                _rideCompleted = true;
+                                                _iconPosition = 0;
                                               });
                                             } else {
-                                              // Reset icon position if not swiped far enough
                                               setState(() {
-                                                _iconPosition =
-                                                    0; // Reset position
+                                                _iconPosition = 0;
                                               });
                                             }
                                           },
                                           child: Container(
+                                            padding: const EdgeInsets.all(10),
                                             margin: EdgeInsets.only(
                                                 left: _iconPosition),
                                             child: Image.network(
@@ -288,7 +273,7 @@ class _TripScreenState extends State<TripScreen> {
                                           child: Text(
                                             _rideCompleted
                                                 ? 'Ride Completed'
-                                                : 'Swipe to complete ride', // Change text based on ride status
+                                                : 'Swipe to complete ride',
                                             style: const TextStyle(
                                                 color: Colors.white),
                                           ),
